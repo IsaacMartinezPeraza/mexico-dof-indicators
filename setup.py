@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='indicatorsDOF',
     version='0.alpha.0',
-    description='Module to obtain official rates of MXN to USD from Mexico DOF',
+    description='Module to obtain official rates from Mexico DOF',
     url='https://https://github.com/IsaacMartinezPeraza/mexico-dof-indicators',
     author='Isaac Martinez',
     author_email='alex97925@gmail.com',
