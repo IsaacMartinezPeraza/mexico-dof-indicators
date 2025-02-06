@@ -1,15 +1,9 @@
 from bs4 import BeautifulSoup
 import requests
 
-
-def getExchangeRate(fechaInicio, fechaFinal = '0'):
-    # Define the date range for the request.
-    # In case of 'fechaFinal' not defined, the 'fechaInicio' is used.
-    if fechaFinal == '0':
-        fechaFinal = fechaInicio
-    indicador = '158'
+def getIndicator(indicator, startDate, endDate):
     # Create the URL with the date range.
-    url = f"https://dof.gob.mx/indicadores_detalle.php?cod_tipo_indicador={indicador}&dfecha={fechaInicio}&hfecha={fechaFinal}"
+    url = f"https://dof.gob.mx/indicadores_detalle.php?cod_tipo_indicador={indicator}&dfecha={startDate}&hfecha={endDate}"
 
     # Perform the GET request.
     response = requests.get(url, headers={'user-agent': 'apiwebscraper'}, verify=False)
@@ -28,32 +22,145 @@ def getExchangeRate(fechaInicio, fechaFinal = '0'):
     
     # The function returns a dictionary with the date as the 'key' and the exchange rate as the 'value' for each date.
     # If the specific date or range selected does not contain an exchange rate, the function will return an empty dictionary.
+
     return data
 
-# indicador = 158: TASA DE CAMBIO MXN A USD
-# indicador = 159: UDIS
-# indicador = 160: CCP
-# indicador = 161: CCP-UDIS
-# indicador = 162: CPP
-# indicador = 163: CCP-DOLARES
+# Function to obtain exchange rate from MXN to USD
+def getExchangeRate(startDate, endDate = '0'):
+    # Define the date range for the request.
+    # In case of 'endDate' not defined, the 'startDate' is used.
+    if endDate == '0':
+        endDate = startDate
+    indicator = '158'
 
-# indicador = 165: TIIE 28 DIAS
-# indicador = 166: TIIE 91 DIAS
-# indicador = 167: TIIC DEPOSITOS 60 DIAS
-# indicador = 168: TIIC DEPOSITOS 90 DIAS
-# indicador = 169: TIIC DEPOSITOS 180 DIAS
-# indicador = 170: TIIC PAGARES 28 DIAS
-# indicador = 171: TIIC PAGARES 91 DIAS
-# indicador = 172: TIIC PAGARES 182 DIAS
+    # Calls functions for GET request, if no data found, empty dictionary will be returned.
+    exchangeRate = getIndicator(indicator, startDate, endDate)
+    return exchangeRate
 
-# indicador = 174: TIIE 182 DIAS
-# indicador = 175: TIIE DE FONDEO
-# indicador = 176: TIIE 90 DIAS
-# indicador = 177: TIIE 29 DIAS
-# indicador = 178: TIIE 27 DIAS
-# indicador = 179: TIIE 26 DIAS
-# indicador = 180: TIIE 181 DIAS
-# indicador = 181: TIIE 92 DIAS
-# indicador = 182: TIIE 89 DIAS
-# indicador = 183: TIIE 183 DIAS
-# indicador = 184: TIIE 180 DIAS
+# Function to obtain UDIS rate
+def getUDIS(startDate, endDate = '0'):
+    # Define the date range for the request.
+    # In case of 'endDate' not defined, the 'startDate' is used.
+    if endDate == '0':
+        endDate = startDate
+    indicator = '159'
+
+    # Calls functions for GET request, if no data found, empty dictionary will be returned.
+    udis = getIndicator(indicator, startDate, endDate)
+    return udis
+
+# Function to obtain CPP rate
+def getCPP(startDate, endDate = '0'):
+    # Define the date range for the request.
+    # In case of 'endDate' not defined, the 'startDate' is used.
+    if endDate == '0':
+        endDate = startDate
+    indicator = '162'
+
+    # Calls functions for GET request, if no data found, empty dictionary will be returned.
+    cpp = getIndicator(indicator, startDate, endDate)
+    return cpp
+
+# Function to obtain CCP rate, and relations to UDIS and USD
+def getCCP(startDate, endDate = '0', tipo = 'none'):
+    match tipo.lower():
+        case 'none':
+            indicator = '160'
+        case 'udis':
+            indicator = '161'
+        case 'usd':
+            indicator = '163'
+        case _:
+            indicator = '160'
+
+    # Define the date range for the request.
+    # In case of 'endDate' not defined, the 'startDate' is used.
+    if endDate == '0':
+        endDate = startDate
+    
+    # Calls functions for GET request, if no data found, empty dictionary will be returned.
+    ccp = getIndicator(indicator, startDate, endDate)
+    return ccp
+
+# Function to obtain TIIC DEPOSITOS rate
+def getTIICdep(startDate, endDate = '0', period='60'):
+    match period:
+        case '60':
+            indicator = '167'
+        case '90':
+            indicator = '168'
+        case '180':
+            indicator = '169'
+        case _:
+            indicator = '167'
+
+    # Define the date range for the request.
+    # In case of 'endDate' not defined, the 'startDate' is used.
+    if endDate == '0':
+        endDate = startDate
+
+    # Calls functions for GET request, if no data found, empty dictionary will be returned.
+    tiic = getIndicator(indicator, startDate, endDate)
+    return tiic
+
+# Function to obtain TIIC PAGARES rate
+def getTIICpag(startDate, endDate = '0', period='28'):
+    match period:
+        case '28':
+            indicator = '170'
+        case '91':
+            indicator = '171'
+        case '182':
+            indicator = '172'
+        case _:
+            indicator = '170'
+
+    # Define the date range for the request.
+    # In case of 'endDate' not defined, the 'startDate' is used.
+    if endDate == '0':
+        endDate = startDate
+
+    # Calls functions for GET request, if no data found, empty dictionary will be returned.
+    tiic = getIndicator(indicator, startDate, endDate)
+    return tiic
+
+# Function to obtain TIIE rate
+def getTIIE(startDate, endDate = '0', period='26'):
+    match period:
+        case '26':
+            indicator = '179'
+        case '27':
+            indicator = '178'
+        case '28':
+            indicator = '165'
+        case '29':
+            indicator = '177'
+        case '89':
+            indicator = '182'
+        case '90':
+            indicator = '176'
+        case '91':
+            indicator = '166'
+        case '92':
+            indicator = '181'
+        case '180':
+            indicator = '184'
+        case '181':
+            indicator = '180'
+        case '182':
+            indicator = '174'
+        case '183':
+            indicator = '183'
+        case 'none':
+            indicator = '175'
+        case _:
+            indicator = '179'
+
+    # Define the date range for the request.
+    # In case of 'endDate' not defined, the 'startDate' is used.
+    if endDate == '0':
+        endDate = startDate
+
+    # Calls functions for GET request, if no data found, empty dictionary will be returned.
+    tiie = getIndicator(indicator, startDate, endDate)
+    return tiie
