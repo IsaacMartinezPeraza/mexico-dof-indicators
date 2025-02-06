@@ -10,12 +10,12 @@ from getDOFIndicators import getExchangeRate
 
 ## getExchangeRate()
 ```py
-getExchangeRate(fechaInicio, fechaFinal = '0'):
+getExchangeRate(startDate, endDate = '0'):
 ```
 
 The function expects one or two string parameters, in the format `"dd/mm/yyyy"`, it will return a dictionary with the *'key'* being the date as a `string`, and the *'value'* the exchange rate as a `float`. If no exchange rate is found in the date or range of dates provided, the function will return an empty dictionary.
 
-You can call it with only the start date `fechaInicio` which will return the exchange rate of that date if there is any, or call it with a start date `fechaInicio` and end date `fechaFinal`. Be aware if the end date is before the start date the function will return an empty dictionary.
+You can call it with only the start date `startDate` which will return the exchange rate of that date if there is any, or call it with a start date `startDate` and end date `endDate`. Be aware if the end date is before the start date the function will return an empty dictionary.
 ```py
 getExchangeRate("24/04/2017")
 # Returns: {'24-04-2017': 18.8413}
