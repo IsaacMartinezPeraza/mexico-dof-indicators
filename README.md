@@ -80,7 +80,7 @@ getExchangeRate("29/04/2017", "24/04/2017")
 
 ### getUDIS()
 ```py
-getExchangeRate(startDate, endDate = '0')
+getUDIS(startDate, endDate = '0')
 ```
 
 The function expects one or two string parameters, in the format `"dd/mm/yyyy"`, it will return a dictionary with the *'key'* being the date as a `string`, and the *'value'* the UDIS as a `float`. If no UDIS is found in the date or range of dates provided, the function will return an empty dictionary.
