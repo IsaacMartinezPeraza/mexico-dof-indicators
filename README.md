@@ -204,7 +204,7 @@ getTIICdep("29/04/2017", "24/04/2017")
 getTIICpag(startDate, endDate = '0', period = '28')
 ```
 
-The function expects one to three string parameters, the first two in the format `"dd/mm/yyyy"`, the last in the period of TIIC Payslips rate[^3], it will return a dictionary with the *'key'* being the date as a `string`, and the *'value'* the TIIC rate as a `float`. If no TIIC rate is found in the date or range of dates provided, the function will return an empty dictionary.
+The function expects one to three string parameters, the first two in the format `"dd/mm/yyyy"`, the last in the period of TIIC Payslips rate[^4], it will return a dictionary with the *'key'* being the date as a `string`, and the *'value'* the TIIC rate as a `float`. If no TIIC rate is found in the date or range of dates provided, the function will return an empty dictionary.
 
 You can call it with only the start date `startDate` which will return the TIIC rate of that date if there is any, or call it with a start date `startDate` and end date `endDate`. Be aware if the end date is before the start date the function will return an empty dictionary.
 
@@ -253,7 +253,7 @@ getTIICpag("29/04/2017", "24/04/2017")
 getTIIE(startDate, endDate = '0', period = '28')
 ```
 
-The function expects one to three string parameters, the first two in the format `"dd/mm/yyyy"`, the last in the period of TIIE rate[^4], it will return a dictionary with the *'key'* being the date as a `string`, and the *'value'* the TIIE rate as a `float`. If no TIIE rate is found in the date or range of dates provided, the function will return an empty dictionary.
+The function expects one to three string parameters, the first two in the format `"dd/mm/yyyy"`, the last in the period of TIIE rate[^5], it will return a dictionary with the *'key'* being the date as a `string`, and the *'value'* the TIIE rate as a `float`. If no TIIE rate is found in the date or range of dates provided, the function will return an empty dictionary.
 
 You can call it with only the start date `startDate` which will return the TIIE rate of that date if there is any, or call it with a start date `startDate` and end date `endDate`. Be aware if the end date is before the start date the function will return an empty dictionary.
 
@@ -339,5 +339,6 @@ getTIIE("29/04/2017", "24/04/2017")
 
 [^1]: [See list of indicators](https://github.com/IsaacMartinezPeraza/mexico-dof-indicators?tab=readme-ov-file#list-of-indicators)
 [^2]: [See list of CCP types](https://github.com/IsaacMartinezPeraza/mexico-dof-indicators?tab=readme-ov-file#list-of-CCP-Types)
-[^3]: [See list of TIIC Periods](https://github.com/IsaacMartinezPeraza/mexico-dof-indicators?tab=readme-ov-file#list-of-TIIC-Periods)
-[^4]: [See list of TIIE Periods](https://github.com/IsaacMartinezPeraza/mexico-dof-indicators?tab=readme-ov-file#list-of-TIIE-Periods)
+[^3]: [See list of TIIC Deposits Periods](https://github.com/IsaacMartinezPeraza/mexico-dof-indicators?tab=readme-ov-file#ticc-deposits-periods)
+[^4]: [See list of TIIC Payslips Periods](https://github.com/IsaacMartinezPeraza/mexico-dof-indicators?tab=readme-ov-file#ticc-payslips-periods)
+[^5]: [See list of TIIE Periods](https://github.com/IsaacMartinezPeraza/mexico-dof-indicators?tab=readme-ov-file#list-of-TIIE-Periods)
