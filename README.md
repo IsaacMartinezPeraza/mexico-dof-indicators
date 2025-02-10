@@ -204,7 +204,7 @@ getTIICdep("29/04/2017", "24/04/2017")
 getTIICpag(startDate, endDate = '0', period = '28')
 ```
 
-The function expects one to three string parameters, the first two in the format `"dd/mm/yyyy"`, the last in the period of TIIC Payslips rate[^4], it will return a dictionary with the *'key'* being the date as a `string`, and the *'value'* the TIIC rate as a `float`. If no TIIC rate is found in the date or range of dates provided, the function will return an empty dictionary.
+The function expects one to three string parameters, the first two in the format `"dd/mm/yyyy"`, the last in the period of TIIC Promissory note rate[^4], it will return a dictionary with the *'key'* being the date as a `string`, and the *'value'* the TIIC rate as a `float`. If no TIIC rate is found in the date or range of dates provided, the function will return an empty dictionary.
 
 You can call it with only the start date `startDate` which will return the TIIC rate of that date if there is any, or call it with a start date `startDate` and end date `endDate`. Be aware if the end date is before the start date the function will return an empty dictionary.
 
@@ -280,65 +280,76 @@ getTIIE("29/04/2017", "24/04/2017")
 
 
 ## List of indicators
-- '158': Exchange rate of MXN to USD
-- '159': UDIS
-- '160': CCP
-- '161': CCP-UDIS
-- '162': CPP
-- '163': CCP-USD
-- '165': TIIE 28 DIAS
-- '166': TIIE 91 DIAS
-- '167': TIIC DEPOSITOS 60 DIAS
-- '168': TIIC DEPOSITOS 90 DIAS
-- '169': TIIC DEPOSITOS 180 DIAS
-- '170': TIIC PAGARES 28 DIAS
-- '171': TIIC PAGARES 91 DIAS
-- '172': TIIC PAGARES 182 DIAS
-- '174': TIIE 182 DIAS
-- '175': TIIE DE FONDEO
-- '176': TIIE 90 DIAS
-- '177': TIIE 29 DIAS
-- '178': TIIE 27 DIAS
-- '179': TIIE 26 DIAS
-- '180': TIIE 181 DIAS
-- '181': TIIE 92 DIAS
-- '182': TIIE 89 DIAS
-- '183': TIIE 183 DIAS
-- '184': TIIE 180 DIAS
+
+|  Indicator  |          Description          |
+|    :----:   |              ----             |
+|    '158'    |  Exchange rate of MXN to USD  |
+|    '159'    |  UDIS                         |
+|    '160'    |  CCP                          |
+|    '161'    |  CCP-UDIS                     |
+|    '162'    |  CPP                          |
+|    '163'    |  CCP-USD                      |
+|    '165'    |  TIIE 28 DIAS                 |
+|    '166'    |  TIIE 91 DIAS                 |
+|    '167'    |  TIIC DEPOSITOS 60 DIAS       |
+|    '168'    |  TIIC DEPOSITOS 90 DIAS       |
+|    '169'    |  TIIC DEPOSITOS 180 DIAS      |
+|    '170'    |  TIIC PAGARES 28 DIAS         |
+|    '171'    |  TIIC PAGARES 91 DIAS         |
+|    '172'    |  TIIC PAGARES 182 DIAS        |
+|    '174'    |  TIIE 182 DIAS                |
+|    '175'    |  TIIE DE FONDEO               |
+|    '176'    |  TIIE 90 DIAS                 |
+|    '177'    |  TIIE 29 DIAS                 |
+|    '178'    |  TIIE 27 DIAS                 |
+|    '179'    |  TIIE 26 DIAS                 |
+|    '180'    |  TIIE 181 DIAS                |
+|    '181'    |  TIIE 92 DIAS                 |
+|    '182'    |  TIIE 89 DIAS                 |
+|    '183'    |  TIIE 183 DIAS                |
+|    '184'    |  TIIE 180 DIAS                |
 
 ## List of CCP Types
-- 'none':   CCP         (indicador: '160')
-- 'udis':   CCP-UDIS    (indicador: '161')
-- 'usd':    CCP-DOLARES (indicador: '163')
+|  Parameter  | Description |  Indicator  |
+|   :----:    |    ----     |    :----:   |
+|   'none'    |  CCP        |    '160'    |
+|   'udis'    |  CCP-UDIS   |    '161'    |
+|    'usd'    |  CCP-USD    |    '163'    |
 
 ## List of TIIC Periods
 ### TICC Deposits Periods
-- '60':   TIIC DEPOSITOS 60 DIAS    (indicador: '167')
-- '90':   TIIC DEPOSITOS 90 DIAS    (indicador: '168')
-- '180':  TIIC DEPOSITOS 180 DIAS   (indicador: '169')
+|   Period    |         Description       |  Indicator  |
+|   :----:    |           ----            |    :----:   |
+|    '60'     |  TIIC DEPOSITOS 60 DIAS   |    '167'    |
+|    '90'     |  TIIC DEPOSITOS 90 DIAS   |    '168'    |
+|    '180'    |  TIIC DEPOSITOS 180 DIAS  |    '169'    |
 
-### TICC Payslips Periods
-- '28':   TIIC PAGARES 28 DIAS    (indicador: '170')
-- '91':   TIIC PAGARES 91 DIAS    (indicador: '171')
-- '182':  TIIC PAGARES 182 DIAS   (indicador: '172')
+### TICC Promissory note Periods
+|   Period    |        Description      |  Indicator  |
+|   :----:    |          ----           |    :----:   |
+|    '28'     |  TIIC PAGARES 28 DIAS   |    '170'    |
+|    '91'     |  TIIC PAGARES 91 DIAS   |    '171'    |
+|    '182'    |  TIIC PAGARES 182 DIAS  |    '172'    |
 
 ## List of TIIE Periods
-- 'none':   TIIE FONDEO     (indicador: '175')
-- '26':     TIIE 26 DIAS    (indicador: '179')
-- '27':     TIIE 27 DIAS    (indicador: '178')
-- '28':     TIIE 28 DIAS    (indicador: '165')
-- '29':     TIIE 29 DIAS    (indicador: '177')
-- '89':     TIIE 89 DIAS    (indicador: '182')
-- '90':     TIIE 90 DIAS    (indicador: '176')
-- '91':     TIIE 91 DIAS    (indicador: '166')
-- '92':     TIIE 92 DIAS    (indicador: '181')
-- '180':    TIIE 180 DIAS   (indicador: '184')
-- '181':    TIIE 181 DIAS   (indicador: '180')
-- '182':    TIIE 182 DIAS   (indicador: '174')
-- '183':    TIIE 183 DIAS   (indicador: '183')
+|   Period    |   Description    |  Indicator  |
+|   :----:    |       ----       |    :----:   |
+|   'none'    |  TIIE FONDEO     |    '175'    |
+|    '26'     |  TIIE 26 DIAS    |    '179'    |
+|    '27'     |  TIIE 27 DIAS    |    '178'    |
+|    '28'     |  TIIE 28 DIAS    |    '165'    |
+|    '29'     |  TIIE 29 DIAS    |    '177'    |
+|    '89'     |  TIIE 89 DIAS    |    '182'    |
+|    '90'     |  TIIE 90 DIAS    |    '176'    |
+|    '91'     |  TIIE 91 DIAS    |    '166'    |
+|    '92'     |  TIIE 92 DIAS    |    '181'    |
+|    '180'    |  TIIE 180 DIAS   |    '184'    |
+|    '181'    |  TIIE 181 DIAS   |    '180'    |
+|    '182'    |  TIIE 182 DIAS   |    '174'    |
+|    '183'    |  TIIE 183 DIAS   |    '183'    |
 
 [^1]: [See list of indicators](https://github.com/IsaacMartinezPeraza/mexico-dof-indicators?tab=readme-ov-file#list-of-indicators)
 [^2]: [See list of CCP types](https://github.com/IsaacMartinezPeraza/mexico-dof-indicators?tab=readme-ov-file#list-of-CCP-Types)
 [^3]: [See list of TIIC Deposits Periods](https://github.com/IsaacMartinezPeraza/mexico-dof-indicators?tab=readme-ov-file#ticc-deposits-periods)
-[^4]: [See list of TIIC Payslips Periods](https://github.com/IsaacMartinezPeraza/mexico-dof-indicators?tab=readme-ov-file#ticc-payslips-periods)
+[^4]: [See list of TIIC Promissory note Periods](https://github.com/IsaacMartinezPeraza/mexico-dof-indicators?tab=readme-ov-file#ticc-promissory-note-periods)
 [^5]: [See list of TIIE Periods](https://github.com/IsaacMartinezPeraza/mexico-dof-indicators?tab=readme-ov-file#list-of-TIIE-Periods)
